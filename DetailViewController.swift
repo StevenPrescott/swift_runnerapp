@@ -12,6 +12,7 @@ class DetailViewController: UIViewController,JsonDelegete {
     
      @IBOutlet var memberDetailTblView : UITableView!
      @IBOutlet var addRunnerBtn : UIButton!
+     @IBOutlet var teamNameLbl : UILabel!
     
      /** This is the Object of NSMutableArray which is used to hold list of all Runners. */
      var memberDetailArray:NSMutableArray = NSMutableArray()
@@ -20,6 +21,7 @@ class DetailViewController: UIViewController,JsonDelegete {
      let jsonParsing = JsonParsing(nibName:"JsonParsing.swift", bundle: nil)
      var dataToSend = NSString()
      var dataFetchingCase : Int = -1
+     var firstView:Int = 0
     
     /** This is the Object of "CustomActivityIndicatorView" Class to show custom Indicator View */
     lazy private var activityIndicator : CustomActivityIndicatorView = {
@@ -32,6 +34,10 @@ class DetailViewController: UIViewController,JsonDelegete {
         self.navigationItem.title = "Team Members"
         self.addLoadingIndicator(view)
          self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
+        let teamNameString:NSMutableString = "My Team: "
+        teamNameString.appendString((NSUserDefaults.standardUserDefaults().valueForKey("coach_team") as? String)!)
+        teamNameLbl.text = teamNameString as String
+        
         self.automaticallyAdjustsScrollViewInsets = false
         memberDetailTblView.reloadData()
     }
@@ -45,10 +51,19 @@ class DetailViewController: UIViewController,JsonDelegete {
     override func viewWillAppear(animated: Bool)
     {
         //Call API to get updated List of all Runners.
+        if( firstView != 0)
+        {
+        
         jsonParsing.loadData("GET", url: RunnerListApi, isHeader: true,throughAccessToken : false,dataToSend : dataToSend as String,sendData : true)
         jsonParsing.jpdelegate = self
+        self.view.userInteractionEnabled = false
+        self.view.alpha = 0.7
+
         dataFetchingCase = ApiResponseValue.RunnerListApiCalled.rawValue
         activityIndicator.startAnimating()
+            
+        }
+        firstView = 1
         super.viewWillAppear(animated)
     }
     func addLoadingIndicator (tempView : UIView)
@@ -99,6 +114,9 @@ class DetailViewController: UIViewController,JsonDelegete {
     {
         let isSuccess : Int = 1
         activityIndicator.stopAnimating()
+        self.view.userInteractionEnabled = true
+        self.view.alpha = 1.0
+
         if(dataFetchingCase == ApiResponseValue.RunnerListApiCalled.rawValue)
         {
             if ((jsonParsing.fetchedJsonResult["success"] as! Int)  == isSuccess )  //test if we get response successfully.
@@ -114,7 +132,12 @@ class DetailViewController: UIViewController,JsonDelegete {
     }
     /** This is the Delegete Method of NSURLConnection Class,and get called when we there is some problem in data receiving */
     func connectionInterruption(){
-        
+        let alert = UIAlertView(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+        self.view.userInteractionEnabled = true
+        self.view.alpha = 1.0
+        activityIndicator.stopAnimating()
+
     }
     /*
     // MARK: - Navigation

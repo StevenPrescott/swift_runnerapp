@@ -14,7 +14,8 @@ class StartRun: UIViewController,JsonDelegete {
     @IBOutlet var milesTF : UITextField!
     @IBOutlet var feetTF : UITextField!
     @IBOutlet var runNameTF : UITextField!
-    
+    @IBOutlet var tempTF : UITextField!
+    @IBOutlet var numOfLapsTF : UITextField!
     
     @IBOutlet var selectRunnerBtn : UIButton!
     @IBOutlet var weatherConditionBtn : UIButton!
@@ -53,6 +54,7 @@ class StartRun: UIViewController,JsonDelegete {
         self.addBottomLayer(milesTF)
         self.addBottomLayer(feetTF)
         self.addBottomLayer(runNameTF)
+        self.addBottomLayer(tempTF)
         
         addLoadingIndicator(self.view)
         
@@ -84,6 +86,8 @@ class StartRun: UIViewController,JsonDelegete {
     {
         milesTF.resignFirstResponder()
         feetTF.resignFirstResponder()
+        tempTF.resignFirstResponder()
+        numOfLapsTF.resignFirstResponder()
     }
     
     //MARK:- Add bottom layer Method
@@ -106,19 +110,19 @@ class StartRun: UIViewController,JsonDelegete {
     {
         //Change the background color of selected weather condition button.
         if (sender.tag == 1){
-            sunnyConditionBtn.backgroundColor = UIColor(red: 33.0/255.0, green: 87.0/255.0, blue: 161.0/255.0, alpha: 1.0)
+            sunnyConditionBtn.backgroundColor = UIColor(red: 33.0/255.0, green: 130.0/255.0, blue: 190.0/255.0, alpha: 1.0)
             foggyConditionBtn.backgroundColor = UIColor(red: 170.0/255.0, green: 170.0/255.0, blue: 170.0/255.0, alpha: 1.0)
             cloudyConditionBtn.backgroundColor = UIColor(red: 170.0/255.0, green: 170.0/255.0, blue: 170.0/255.0, alpha: 1.0)
             currentWeatherCondition.setString("sunny")
         }
         else if(sender.tag == 2){
-            cloudyConditionBtn.backgroundColor = UIColor(red: 33.0/255.0, green: 87.0/255.0, blue: 161.0/255.0, alpha: 1.0)
+            cloudyConditionBtn.backgroundColor = UIColor(red: 33.0/255.0, green: 130.0/255.0, blue: 190.0/255.0, alpha: 1.0)
             foggyConditionBtn.backgroundColor = UIColor(red: 170.0/255.0, green: 170.0/255.0, blue: 170.0/255.0, alpha: 1.0)
             sunnyConditionBtn.backgroundColor = UIColor(red: 170.0/255.0, green: 170.0/255.0, blue: 170.0/255.0, alpha: 1.0)
             currentWeatherCondition.setString("cloudy")
         }
         else{
-            foggyConditionBtn.backgroundColor = UIColor(red: 33.0/255.0, green: 87.0/255.0, blue: 161.0/255.0, alpha: 1.0)
+            foggyConditionBtn.backgroundColor = UIColor(red: 33.0/255.0, green: 130.0/255.0, blue: 190.0/255.0, alpha: 1.0)
             cloudyConditionBtn.backgroundColor = UIColor(red: 170.0/255.0, green: 170.0/255.0, blue: 170.0/255.0, alpha: 1.0)
             sunnyConditionBtn.backgroundColor = UIColor(red: 170.0/255.0, green: 170.0/255.0, blue: 170.0/255.0, alpha: 1.0)
            currentWeatherCondition.setString("foggy")
@@ -148,6 +152,16 @@ class StartRun: UIViewController,JsonDelegete {
             msgLblShow.text = "Please enter run feet."
             self.errorLblShow()
         }
+        else if(tempTF.text == "")
+        {
+            msgLblShow.text = "Please enter temprature in fahrenheit."
+            self.errorLblShow()
+        }
+        else if(numOfLapsTF.text == "")
+        {
+            msgLblShow.text = "Please enter number of laps in run."
+            self.errorLblShow()
+        }
         else{
             
             let runLength:NSMutableString = NSMutableString()  //Make a string of RunLength
@@ -158,10 +172,15 @@ class StartRun: UIViewController,JsonDelegete {
             
             runDetailDict.setObject(runNameTF.text!, forKey: "runName")    //Store Run Conditions for future use.
             runDetailDict.setObject(runLength, forKey: "runLength")
+            runDetailDict.setObject(tempTF.text!, forKey: "temprature")
+            runDetailDict.setObject(numOfLapsTF.text!, forKey: "lapCount")
             runDetailDict.setObject(currentWeatherCondition, forKey: "weatherCondition")
             
             //Call API to get updated list of all runners
             jsonParsing.loadData("GET", url: RunnerListApi, isHeader: true,throughAccessToken : false,dataToSend : dataToSend as String,sendData : true)
+            self.view.userInteractionEnabled = false
+            self.view.alpha = 0.7
+
             jsonParsing.jpdelegate = self
             dataFetchingCase = ApiResponseValue.RunnerListApiCalled.rawValue
             activityIndicator.startAnimating()
@@ -204,13 +223,10 @@ class StartRun: UIViewController,JsonDelegete {
         let array:NSArray = [doneItem]
         toolbar.items = array as? [UIBarButtonItem]
         toolbar.sizeToFit()
-        if textField == milesTF{
-            milesTF.inputAccessoryView = toolbar
+        if textField == milesTF || textField == feetTF || textField == tempTF || textField == numOfLapsTF{
+            textField.inputAccessoryView = toolbar
         }
-        else
-        {
-            feetTF.inputAccessoryView = toolbar
-        }
+        
     }
     
     func textFieldDidEndEditing(textField: UITextField)
@@ -222,6 +238,25 @@ class StartRun: UIViewController,JsonDelegete {
         textField.resignFirstResponder()
         return true
     }
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField == milesTF || textField == feetTF || textField == tempTF {
+            let inverseSet = NSCharacterSet(charactersInString:"0123456789.").invertedSet
+            
+            let components = string.componentsSeparatedByCharactersInSet(inverseSet)
+            
+            let filtered = components.joinWithSeparator("")
+            let countdots = textField.text!.componentsSeparatedByString(".").count - 1
+            
+            if countdots > 0 && string == "."
+            {
+                return false
+            }
+            return string == filtered
+        }
+        return true
+        
+    }
     
     
     //MARK:- NSURLConnection Delegete Methods
@@ -229,6 +264,9 @@ class StartRun: UIViewController,JsonDelegete {
     func dataFound(){
         let isSuccess : Int = 1
         activityIndicator.stopAnimating()
+        self.view.userInteractionEnabled = true
+        self.view.alpha = 1.0
+
         if ((jsonParsing.fetchedJsonResult["success"] as! Int)  == isSuccess )  //test if we get response successfully.
         {
             var tempArray:NSArray = NSArray()
@@ -241,13 +279,23 @@ class StartRun: UIViewController,JsonDelegete {
             self.navigationController?.pushViewController(selectRunnerVC, animated: true)
         }
         else{
-            msgLblShow.text = "Your email or password is incorrect"
-            self.errorLblShow()
+            if(jsonParsing.fetchedJsonResult["data"]?.count > 0){
+                let message = jsonParsing.fetchedJsonResult.valueForKey("data")?.valueForKey("message") as! String
+                let alert = UIAlertView(title: "Alert", message: message, delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+                activityIndicator.stopAnimating()
+                self.view.userInteractionEnabled = true
+                self.view.alpha = 1.0
+            }
         }
     }
     /** This is the Delegete Method of NSURLConnection Class,and get called when we there is some problem in data receiving */
     func connectionInterruption(){
-        
+        let alert = UIAlertView(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+        activityIndicator.stopAnimating()
+        self.view.userInteractionEnabled = true
+        self.view.alpha = 1.0
     }
     /*
     // MARK: - Navigation
@@ -260,3 +308,4 @@ class StartRun: UIViewController,JsonDelegete {
     */
 
 }
+

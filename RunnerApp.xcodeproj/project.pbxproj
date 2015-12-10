@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440B3C2A1BF719E500007CDD /* profilePic.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 440B3C291BF719E500007CDD /* profilePic.jpeg */; };
 		442B753F1BAA5F3D00FF4E0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B753E1BAA5F3D00FF4E0E /* AppDelegate.swift */; };
 		442B75421BAA5F3D00FF4E0E /* RunnerApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 442B75401BAA5F3D00FF4E0E /* RunnerApp.xcdatamodeld */; };
 		442B75441BAA5F3D00FF4E0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B75431BAA5F3D00FF4E0E /* ViewController.swift */; };
@@ -40,6 +41,12 @@
 		44C404F01BBE91310079F5C0 /* RunnerStatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C404EF1BBE91310079F5C0 /* RunnerStatsVC.swift */; };
 		44C5028B1BB7A735002ABF83 /* AddRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5028A1BB7A735002ABF83 /* AddRunner.swift */; };
 		44C502911BB83CB7002ABF83 /* RunLapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C502901BB83CB7002ABF83 /* RunLapVC.swift */; };
+		44E244121BF826D900D7DF1E /* ForgotPasswdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E244111BF826D900D7DF1E /* ForgotPasswdVC.swift */; };
+		44E41A241C0050220005AA7C /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E41A231C0050220005AA7C /* iAd.framework */; };
+		44E41A261C005DE60005AA7C /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E41A251C005DE60005AA7C /* Reachability.swift */; };
+		44E41A281C005F060005AA7C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E41A271C005F060005AA7C /* SystemConfiguration.framework */; };
+		44ECD45F1BF4D9210072048B /* ButtonExtender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ECD45E1BF4D9210072048B /* ButtonExtender.swift */; };
+		44ECD4611BF4D96C0072048B /* TextFieldExtender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ECD4601BF4D96C0072048B /* TextFieldExtender.swift */; };
 		60B226AA1BEC304900D88B65 /* license.md in Sources */ = {isa = PBXBuildFile; fileRef = 60B226A91BEC304900D88B65 /* license.md */; };
 		EAE961251BB0FFD7009E373E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE961241BB0FFD7009E373E /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -55,6 +62,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		440B3C291BF719E500007CDD /* profilePic.jpeg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = profilePic.jpeg; sourceTree = "<group>"; };
 		442B75391BAA5F3D00FF4E0E /* RunnerApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunnerApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		442B753D1BAA5F3D00FF4E0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		442B753E1BAA5F3D00FF4E0E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AppDelegate.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
@@ -99,6 +107,12 @@
 		44C404EF1BBE91310079F5C0 /* RunnerStatsVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RunnerStatsVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		44C5028A1BB7A735002ABF83 /* AddRunner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = AddRunner.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		44C502901BB83CB7002ABF83 /* RunLapVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = RunLapVC.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
+		44E244111BF826D900D7DF1E /* ForgotPasswdVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswdVC.swift; sourceTree = "<group>"; };
+		44E41A231C0050220005AA7C /* iAd.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = iAd.framework; path = System/Library/Frameworks/iAd.framework; sourceTree = SDKROOT; };
+		44E41A251C005DE60005AA7C /* Reachability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Reachability.swift; sourceTree = "<group>"; };
+		44E41A271C005F060005AA7C /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		44ECD45E1BF4D9210072048B /* ButtonExtender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonExtender.swift; sourceTree = "<group>"; };
+		44ECD4601BF4D96C0072048B /* TextFieldExtender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldExtender.swift; sourceTree = "<group>"; };
 		60B226A91BEC304900D88B65 /* license.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = license.md; sourceTree = "<group>"; };
 		EAE961241BB0FFD7009E373E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; lineEnding = 0; path = DetailViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 /* End PBXFileReference section */
@@ -108,6 +122,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E41A281C005F060005AA7C /* SystemConfiguration.framework in Frameworks */,
+				44E41A241C0050220005AA7C /* iAd.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -124,6 +140,9 @@
 		442B75301BAA5F3D00FF4E0E = {
 			isa = PBXGroup;
 			children = (
+				44E41A271C005F060005AA7C /* SystemConfiguration.framework */,
+				44E41A251C005DE60005AA7C /* Reachability.swift */,
+				44E41A231C0050220005AA7C /* iAd.framework */,
 				60B226A91BEC304900D88B65 /* license.md */,
 				4495D2E61BB66589005D5662 /* loading.png */,
 				4495D2E41BB6653B005D5662 /* CustomActivityIndicatorView.swift */,
@@ -210,9 +229,9 @@
 		4495D2DC1BB653F3005D5662 /* Custom Files */ = {
 			isa = PBXGroup;
 			children = (
+				44E244111BF826D900D7DF1E /* ForgotPasswdVC.swift */,
 				44BF4D981BBEE35000914056 /* EditRunnerVC.swift */,
 				44C404EF1BBE91310079F5C0 /* RunnerStatsVC.swift */,
-				44C502901BB83CB7002ABF83 /* RunLapVC.swift */,
 				44C5028A1BB7A735002ABF83 /* AddRunner.swift */,
 				4495D2F01BB70ED0005D5662 /* StartRun.swift */,
 				4495D2EE1BB6A06B005D5662 /* SelectRunnerVC.swift */,
@@ -221,8 +240,11 @@
 				4495D2E01BB65A19005D5662 /* SignIn.swift */,
 				EAE961241BB0FFD7009E373E /* DetailViewController.swift */,
 				442B756D1BAA79CF00FF4E0E /* MemberDetailCell.swift */,
+				44C502901BB83CB7002ABF83 /* RunLapVC.swift */,
 				44C404EB1BBE568B0079F5C0 /* RunLapCell.swift */,
 				44C404ED1BBE8DDE0079F5C0 /* RunnerStatsCell.swift */,
+				44ECD4601BF4D96C0072048B /* TextFieldExtender.swift */,
+				44ECD45E1BF4D9210072048B /* ButtonExtender.swift */,
 			);
 			name = "Custom Files";
 			sourceTree = "<group>";
@@ -230,6 +252,7 @@
 		4495D2DD1BB65755005D5662 /* Images */ = {
 			isa = PBXGroup;
 			children = (
+				440B3C291BF719E500007CDD /* profilePic.jpeg */,
 				442B75651BAA721300FF4E0E /* dropdown_repeat_bg_blue.png */,
 				442B75631BAA6F1C00FF4E0E /* lines_repeat_bg.png */,
 				442B75611BAA6B0600FF4E0E /* running-logo-vector-illustration-35971018.jpg */,
@@ -284,7 +307,7 @@
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = "Tarun Sachdeva";
+				ORGANIZATIONNAME = "Stevenson Prescott";
 				TargetAttributes = {
 					442B75381BAA5F3D00FF4E0E = {
 						CreatedOnToolsVersion = 6.0;
@@ -322,6 +345,7 @@
 			files = (
 				442B75471BAA5F3D00FF4E0E /* Main.storyboard in Resources */,
 				442B75621BAA6B0600FF4E0E /* running-logo-vector-illustration-35971018.jpg in Resources */,
+				440B3C2A1BF719E500007CDD /* profilePic.jpeg in Resources */,
 				442B754C1BAA5F3D00FF4E0E /* LaunchScreen.xib in Resources */,
 				442B75641BAA6F1D00FF4E0E /* lines_repeat_bg.png in Resources */,
 				4495D2E71BB66589005D5662 /* loading.png in Resources */,
@@ -345,6 +369,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E244121BF826D900D7DF1E /* ForgotPasswdVC.swift in Sources */,
 				442B756E1BAA79CF00FF4E0E /* MemberDetailCell.swift in Sources */,
 				4495D2D21BB64889005D5662 /* SBJsonWriter.m in Sources */,
 				4495D2F11BB70ED0005D5662 /* StartRun.swift in Sources */,
@@ -352,6 +377,7 @@
 				44C502911BB83CB7002ABF83 /* RunLapVC.swift in Sources */,
 				4495D2EF1BB6A06B005D5662 /* SelectRunnerVC.swift in Sources */,
 				4495D2DA1BB64A20005D5662 /* JsonParsing.swift in Sources */,
+				44E41A261C005DE60005AA7C /* Reachability.swift in Sources */,
 				44BF4D991BBEE35000914056 /* EditRunnerVC.swift in Sources */,
 				4495D2E51BB6653B005D5662 /* CustomActivityIndicatorView.swift in Sources */,
 				44C404F01BBE91310079F5C0 /* RunnerStatsVC.swift in Sources */,
@@ -365,11 +391,13 @@
 				44C1832F1BB9889800A2AEE0 /* Constant.swift in Sources */,
 				44C183311BB98C4800A2AEE0 /* OtherGlobalConstant.swift in Sources */,
 				4495D2CE1BB64889005D5662 /* NSObject+SBJSON.m in Sources */,
+				44ECD45F1BF4D9210072048B /* ButtonExtender.swift in Sources */,
 				4495D2D11BB64889005D5662 /* SBJsonParser.m in Sources */,
 				4495D2EB1BB67B27005D5662 /* SignUpSecond.swift in Sources */,
 				4495D2CF1BB64889005D5662 /* NSString+SBJSON.m in Sources */,
 				442B75421BAA5F3D00FF4E0E /* RunnerApp.xcdatamodeld in Sources */,
 				44C5028B1BB7A735002ABF83 /* AddRunner.swift in Sources */,
+				44ECD4611BF4D96C0072048B /* TextFieldExtender.swift in Sources */,
 				44C404EC1BBE568B0079F5C0 /* RunLapCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,7 +529,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RunnerApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Tsss.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = spann.RunnerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RunnerApp-Bridging-Header.h";
@@ -518,7 +546,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = RunnerApp/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "Tsss.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = spann.RunnerApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "RunnerApp-Bridging-Header.h";

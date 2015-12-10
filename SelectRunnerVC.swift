@@ -149,7 +149,13 @@ class SelectRunnerVC: UIViewController,UITableViewDelegate,UITableViewDataSource
     }
     /** This is the Delegete Method of NSURLConnection Class,and get called when we there is some problem in data receiving */
     func connectionInterruption(){
-        
+        let alert = UIAlertView(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+        activityIndicator.stopAnimating()
+        self.view.userInteractionEnabled = true
+        self.view.alpha = 1.0
+
+ 
     }
     
 

@@ -18,12 +18,25 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-    let navigationController = application.windows[0].rootViewController as! UINavigationController
+        application.statusBarHidden = true
+        let navigationController = application.windows[0].rootViewController as! UINavigationController
+       
+        
+        //Register For Remote Notification
+        let settings = UIUserNotificationSettings(forTypes: [.Alert, .Badge, .Sound], categories: nil)
+        UIApplication.sharedApplication().registerUserNotificationSettings(settings)
+        UIApplication.sharedApplication().registerForRemoteNotifications()
+        
+        
         if(NSUserDefaults.standardUserDefaults().valueForKey("logout") == nil )
         {
             NSUserDefaults.standardUserDefaults().setValue("true", forKey: "logout")
             NSUserDefaults.standardUserDefaults().synchronize()
-            
+        }
+        if(NSUserDefaults.standardUserDefaults().valueForKey("coach_name") == nil )
+        {
+            NSUserDefaults.standardUserDefaults().setValue("N.A", forKey: "coach_name")
+            NSUserDefaults.standardUserDefaults().synchronize()
         }
         
         if((NSUserDefaults.standardUserDefaults().valueForKey("logout")) as? NSString == "true")
@@ -33,7 +46,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         else
         {
             let mainStoryboard: UIStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            let homeVC:UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("HomeScreen") as! UIViewController
+         //   let homeVC:UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("HomeScreen") as! UIViewController
+            let homeVC:UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("HomeScreen") 
             navigationController.pushViewController(homeVC, animated: true)
             
             
@@ -44,6 +58,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         return true
     }
+    
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.

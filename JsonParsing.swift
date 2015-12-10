@@ -23,12 +23,18 @@ class JsonParsing: UIViewController {
     
 
     override func viewDidLoad() {
+        
+       
+        
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
     func loadData(HttpType : String, url : String ,isHeader : Bool,throughAccessToken : Bool,dataToSend:String,sendData :Bool)
     {
+       
+        
+        
         var base64LoginString = String()
         print(NSUserDefaults.standardUserDefaults().valueForKey("username") as! String)
         let username: String! = NSUserDefaults.standardUserDefaults().valueForKey("username") as! String
@@ -64,8 +70,11 @@ class JsonParsing: UIViewController {
         {
             request.addValue("application/json", forHTTPHeaderField: "Content-Type")
             request.setValue("Basic \(base64LoginString)", forHTTPHeaderField: "Authorization")
+           // request.addValue("no-cache", forHTTPHeaderField: "Cache-Control")
+            
         }
         print("URL Request is : \(request)")
+        print("URL Request is : \(urlSession)")
         theConnection = NSURLConnection(request: request, delegate: self, startImmediately: true)!
     }
     
@@ -82,12 +91,18 @@ class JsonParsing: UIViewController {
     }
     func connection(connection: NSURLConnection!, didFailWithError error:NSError!)
     {
-        self.jpdelegate?.connectionInterruption()
+        if Reachability.isConnectedToNetwork() == true {
+            print("Internet connection OK")
+        } else {
+            print("Internet connection FAILED")
+            
+            self.jpdelegate?.connectionInterruption()
+        }
     }
     
     func connectionDidFinishLoading(connection: NSURLConnection!)
     {
-        var err: NSError
+        //var err: NSError
         fetchedJsonResult = NSDictionary()
         fetchedDataArray.removeAllObjects()
         // println(fetchedData)

@@ -45,7 +45,7 @@ class SignUpSecond: UIViewController,JsonDelegete {
         self.addBottomLayer(emailTF)
         self.addBottomLayer(passWdTF)
         self.addBottomLayer(confirmPassWdTF)
-        
+        addLoadingIndicator(self.view)
         msgLblShow.layer.masksToBounds = true
         msgLblShow.layer.cornerRadius = 4.0
         signUpBtn.layer.cornerRadius = 4.0
@@ -55,7 +55,7 @@ class SignUpSecond: UIViewController,JsonDelegete {
     func addLoadingIndicator (tempView : UIView)
     {
         tempView.addSubview(activityIndicator)
-        activityIndicator.center = self.msgLblShow.center
+        activityIndicator.center = self.view.center
         
     }
     
@@ -128,6 +128,11 @@ class SignUpSecond: UIViewController,JsonDelegete {
             
             NSUserDefaults.standardUserDefaults().setValue(passWdTF.text, forKey: "password") //store Email for permanent storage
 
+            
+            print(receivedData)
+            NSUserDefaults.standardUserDefaults().synchronize()
+            NSUserDefaults.standardUserDefaults().setValue(receivedData.objectAtIndex(0).valueForKey("coachName"), forKey: "coach_name") //store Coach Name for permanent storage
+            
             NSUserDefaults.standardUserDefaults().synchronize()
             
             let data = NSMutableDictionary()    //Data to send along with API
@@ -154,6 +159,10 @@ class SignUpSecond: UIViewController,JsonDelegete {
                 dataToSend  = data.JSONRepresentation()    //Change data in Json Format
             }
             //Call API to Sign Up the Coach and Save information to Server
+            
+            self.view.userInteractionEnabled = false
+            self.view.alpha = 0.7
+
             jsonParsing.loadData("POST", url: SignUpApi, isHeader: true,throughAccessToken : false,dataToSend : dataToSend as String,sendData : true)
             jsonParsing.jpdelegate = self
             dataFetchingCase = ApiResponseValue.SignUpApiCalled.rawValue
@@ -230,13 +239,29 @@ class SignUpSecond: UIViewController,JsonDelegete {
     func dataFound(){
         let isSuccess : Int = 1
         activityIndicator.stopAnimating()
+        self.view.userInteractionEnabled = true
+        self.view.alpha = 1.0
+
         if (dataFetchingCase == ApiResponseValue.SignUpApiCalled.rawValue){
             if ((jsonParsing.fetchedJsonResult["success"] as! Int)  == isSuccess )
             {
                 let access_token: NSString? = jsonParsing.fetchedDataArray.objectAtIndex(0)["access_token"] as? String
                 let coach_id: Int? = jsonParsing.fetchedDataArray.objectAtIndex(0)["id"] as? Int  //Get unique Coach ID.
+                
+                let user_id: Int? = jsonParsing.fetchedDataArray.objectAtIndex(0)["userid"] as? Int  //Get unique User ID.
+                
+                let coach_team: String? = jsonParsing.fetchedDataArray.objectAtIndex(0)["team"] as? String
+                
+                NSUserDefaults.standardUserDefaults().setValue(String(format: "%d", user_id!), forKey: "user_id") //Save User ID for further use.
+                NSUserDefaults.standardUserDefaults().synchronize()
+
+                
                 NSUserDefaults.standardUserDefaults().setValue(String(format: "%d", coach_id!), forKey: "coach_id") //Save Caoch ID for further use.
                 NSUserDefaults.standardUserDefaults().synchronize()
+                
+                NSUserDefaults.standardUserDefaults().setValue(String(format: "%@", coach_team!), forKey: "coach_team") //Save Caoch ID for further use.
+                NSUserDefaults.standardUserDefaults().synchronize()
+                
                 NSUserDefaults.standardUserDefaults().setValue(access_token, forKey: "access_token")
                 NSUserDefaults.standardUserDefaults().synchronize()
                 NSUserDefaults.standardUserDefaults().setValue("false", forKey: "logout")
@@ -250,14 +275,23 @@ class SignUpSecond: UIViewController,JsonDelegete {
                 self.navigationController?.pushViewController(homeVC, animated: true)
             }
             else{
-                msgLblShow.text = "Your email or password is incorrect"
-                self.errorLblShow()
+                let alert = UIAlertView(title: "Alert", message: "Username/email already exist.", delegate: nil, cancelButtonTitle: "OK")
+                alert.show()
+                self.view.userInteractionEnabled = true
+                self.view.alpha = 1.0
+                activityIndicator.stopAnimating()
             }
         }
     }
     /** This is the Delegete Method of NSURLConnection Class, and gets called when we there is some problem in data receiving */
     func connectionInterruption(){
-        
+        let alert = UIAlertView(title: "No Internet Connection", message: "Make sure your device is connected to the internet.", delegate: nil, cancelButtonTitle: "OK")
+        alert.show()
+        activityIndicator.stopAnimating()
+        self.view.userInteractionEnabled = true
+        self.view.alpha = 1.0
+
+ 
     }
     
     override func didReceiveMemoryWarning() {

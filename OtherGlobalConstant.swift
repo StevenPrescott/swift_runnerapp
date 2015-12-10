@@ -18,5 +18,6 @@ enum ApiResponseValue : Int
     EditRunnerApiCalled,
     RunnerStatApiCalled,
     AddRunApiCalled,
-    InitializeRunnerScreen
+    InitializeRunnerScreen,
+    ForgetPasswordApiCalled
 }

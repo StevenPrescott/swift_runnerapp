@@ -18,6 +18,9 @@ class RunLapCell: UITableViewCell {
     
     @IBOutlet var timeLbl : UILabel!
     
+    var cellTapCount : Int = 0
+    var totalTimeCount : Int = 0
+    var lapRecord:NSMutableArray = NSMutableArray()
     
     var runnerId:NSMutableString = NSMutableString()
 
