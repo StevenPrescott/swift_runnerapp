@@ -45,7 +45,7 @@ class SignIn: UIViewController,UITextFieldDelegate,JsonDelegete {
        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .Plain, target: nil, action: nil)
         self.navigationItem.setHidesBackButton(true, animated: false)
        // navigationController!.navigationBar.barTintColor = UIColor(red: 100.0/255.0, green: 119.0/255.0, blue: 149.0/255.0, alpha:1.0)
-        self.navigationItem.title = "Runner Out of Time"
+        self.navigationItem.title = "Sign in or create a free account."
         navigationController!.navigationBar.titleTextAttributes = [NSForegroundColorAttributeName: UIColor.whiteColor()]
 
         addLoadingIndicator(self.view)
