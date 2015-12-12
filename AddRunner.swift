@@ -560,15 +560,6 @@ class AddRunner: UIViewController,JsonDelegete,UIAlertViewDelegate,UIPickerViewD
                 removeRunnerView.hidden = false
                 allRunnerTblView.reloadData()
             }
-            else
-            {
-                if (jsonParsing.fetchedJsonResult.valueForKey("data")!.valueForKey("message")!.isEqualToString("No record found!"))
-                {
-                  runnerListArray.removeAllObjects()
-                  removeRunnerView.hidden = false
-                  allRunnerTblView.reloadData()
-                }
-            }
         }
         else if(dataFetchingCase == ApiResponseValue.AddRunnerApiCalled.rawValue)
         {

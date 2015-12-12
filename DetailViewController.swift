@@ -128,14 +128,6 @@ class DetailViewController: UIViewController,JsonDelegete {
                 memberDetailArray.addObjectsFromArray(tempArray.filteredArrayUsingPredicate(predicate))
                 memberDetailTblView.reloadData()
             }
-            else
-            {
-                if (jsonParsing.fetchedJsonResult.valueForKey("data")!.valueForKey("message")!.isEqualToString("No record found!"))
-                {
-                    memberDetailArray.removeAllObjects()
-                    memberDetailTblView.reloadData()
-                }
-            }
         }
     }
     /** This is the Delegete Method of NSURLConnection Class,and get called when we there is some problem in data receiving */

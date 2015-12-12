@@ -93,8 +93,9 @@ class JsonParsing: UIViewController {
     {
         if Reachability.isConnectedToNetwork() == true {
             print("Internet connection OK")
-            self.jpdelegate?.connectionInterruption()
         } else {
+            print("Internet connection FAILED")
+            
             self.jpdelegate?.connectionInterruption()
         }
     }

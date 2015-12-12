@@ -2,8 +2,8 @@
 //  ButtonExtender.swift
 //  RunnerApp
 //
-//  Created by Tarun Sachdeva on 11/12/15.
-//  Copyright © 2015 Tarun Sachdeva. All rights reserved.
+//  Created by Prescott | Neshagaran on 11/12/15.
+//  Copyright © 2015 Prescott | Neshagaran. All rights reserved.
 //
 
 import Foundation
