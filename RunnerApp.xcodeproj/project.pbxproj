@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		440B3C2A1BF719E500007CDD /* profilePic.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 440B3C291BF719E500007CDD /* profilePic.jpeg */; settings = {ASSET_TAGS = (); }; };
+		440B3C2A1BF719E500007CDD /* profilePic.jpeg in Resources */ = {isa = PBXBuildFile; fileRef = 440B3C291BF719E500007CDD /* profilePic.jpeg */; };
 		442B753F1BAA5F3D00FF4E0E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B753E1BAA5F3D00FF4E0E /* AppDelegate.swift */; };
 		442B75421BAA5F3D00FF4E0E /* RunnerApp.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 442B75401BAA5F3D00FF4E0E /* RunnerApp.xcdatamodeld */; };
 		442B75441BAA5F3D00FF4E0E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 442B75431BAA5F3D00FF4E0E /* ViewController.swift */; };
@@ -41,12 +41,12 @@
 		44C404F01BBE91310079F5C0 /* RunnerStatsVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C404EF1BBE91310079F5C0 /* RunnerStatsVC.swift */; };
 		44C5028B1BB7A735002ABF83 /* AddRunner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C5028A1BB7A735002ABF83 /* AddRunner.swift */; };
 		44C502911BB83CB7002ABF83 /* RunLapVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44C502901BB83CB7002ABF83 /* RunLapVC.swift */; };
-		44E244121BF826D900D7DF1E /* ForgotPasswdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E244111BF826D900D7DF1E /* ForgotPasswdVC.swift */; settings = {ASSET_TAGS = (); }; };
+		44E244121BF826D900D7DF1E /* ForgotPasswdVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E244111BF826D900D7DF1E /* ForgotPasswdVC.swift */; };
 		44E41A241C0050220005AA7C /* iAd.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E41A231C0050220005AA7C /* iAd.framework */; };
-		44E41A261C005DE60005AA7C /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E41A251C005DE60005AA7C /* Reachability.swift */; settings = {ASSET_TAGS = (); }; };
+		44E41A261C005DE60005AA7C /* Reachability.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E41A251C005DE60005AA7C /* Reachability.swift */; };
 		44E41A281C005F060005AA7C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E41A271C005F060005AA7C /* SystemConfiguration.framework */; };
-		44ECD45F1BF4D9210072048B /* ButtonExtender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ECD45E1BF4D9210072048B /* ButtonExtender.swift */; settings = {ASSET_TAGS = (); }; };
-		44ECD4611BF4D96C0072048B /* TextFieldExtender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ECD4601BF4D96C0072048B /* TextFieldExtender.swift */; settings = {ASSET_TAGS = (); }; };
+		44ECD45F1BF4D9210072048B /* ButtonExtender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ECD45E1BF4D9210072048B /* ButtonExtender.swift */; };
+		44ECD4611BF4D96C0072048B /* TextFieldExtender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44ECD4601BF4D96C0072048B /* TextFieldExtender.swift */; };
 		60B226AA1BEC304900D88B65 /* license.md in Sources */ = {isa = PBXBuildFile; fileRef = 60B226A91BEC304900D88B65 /* license.md */; };
 		EAE961251BB0FFD7009E373E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAE961241BB0FFD7009E373E /* DetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -307,7 +307,7 @@
 				LastSwiftMigration = 0700;
 				LastSwiftUpdateCheck = 0700;
 				LastUpgradeCheck = 0700;
-				ORGANIZATIONNAME = "Tarun Sachdeva";
+				ORGANIZATIONNAME = "Steven Prescott";
 				TargetAttributes = {
 					442B75381BAA5F3D00FF4E0E = {
 						CreatedOnToolsVersion = 6.0;

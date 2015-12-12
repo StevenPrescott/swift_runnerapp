@@ -98,27 +98,27 @@ class SignUpSecond: UIViewController,JsonDelegete {
         //validate that no field should be empty
         if emailTF.text == ""
         {
-            msgLblShow.text = "Please enter email ID."
+            msgLblShow.text = "Please enter your email address."
             self.errorLblShow()
         }
         else if (isValidEmail(emailTF.text!) == false)
         {
-            msgLblShow.text = "Please enter a valid email-Id."
+            msgLblShow.text = "Please enter a valid email address."
             self.errorLblShow()
         }
         else if passWdTF.text == ""
         {
-            msgLblShow.text = "Please enter your password"
+            msgLblShow.text = "Please enter your password."
             self.errorLblShow()
         }
         else if confirmPassWdTF.text == ""
         {
-            msgLblShow.text = "Please enter confirm password"
+            msgLblShow.text = "Please confirm your password"
             self.errorLblShow()
         }
         else if passWdTF.text != confirmPassWdTF.text
         {
-            msgLblShow.text = "Password and confirm password must be same"
+            msgLblShow.text = "Password and confirmation must be same."
             self.errorLblShow()
         }
         else
